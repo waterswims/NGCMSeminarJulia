@@ -1,0 +1,113 @@
+\documentclass{beamer}
+\usepackage{xcolor}
+%\usepackage{fontspec}
+%\setmainfont{Georgia}
+%\usepackage[T1]{fontenc}
+\usepackage{winfonts}
+\usepackage[backend=bibtex]{biblatex}
+\renewcommand{\sfdefault}{georgia}
+
+\bibliography{report}
+
+%%%%%%%%%%%%%%
+% Soton colourscheme
+
+%primary palette:           RED    GREEN  BLUE
+\definecolor{sotonblu}{rgb}{.00392 .26275 .34902} % soton blue
+\definecolor{sotongrn}{rgb}{.00000 .44706 .45882} % soton green
+\definecolor{sotoncya}{rgb}{.03922 .58824 .66275} % soton cyan
+\definecolor{sotongry}{rgb}{.19608 .23922 .26275} % soton grey
+\definecolor{sotonbei}{rgb}{.59216 .61961 .27059} % soton beige
+\definecolor{sotonmet}{rgb}{.73333 .73333 .73333} % soton metal
+
+%some secondary colors:
+\definecolor{sotonyel}{rgb}{.99999 .70196 .00000} % soton yellow
+\definecolor{sotonora}{rgb}{.99608 .24314 .07843} % soton orange
+\definecolor{sotonred}{rgb}{.94118 .05882 .17255} % soton red
+\definecolor{sotonrus}{rgb}{.67059 .07059 .06275} % soton russet
+\definecolor{sotonbrn}{rgb}{.54118 .25490 .16863} % soton brown
+\definecolor{sotonpnk}{rgb}{.88627 .41176 .62353} % soton pink
+\definecolor{sotonppl}{rgb}{.32549 .12157 .26667} % soton purple
+
+
+\setbeamertemplate{background canvas}[vertical shading][top=sotonblu,bottom=sotoncya]
+\setbeamercolor{background canvas}{bg=}
+\setbeamercolor{button border}{bg=sotonblu, fg=sotonblu}
+\setbeamercolor{button}{bg=sotonblu, fg=DarkRed}
+
+\setbeamercolor{frametitle}{fg=sotonyel}
+\setbeamercolor{alerted text}{fg=sotonyel}
+\setbeamercolor{normal text}{fg=white}
+\setbeamercolor{titlelike}{fg=sotonyel}
+\setbeamercolor{author}{fg=white}
+\setbeamercolor{date}{fg=white}
+\setbeamercolor{item}{fg=white}
+
+%%%%%%%%%%%%%%%%%%%%
+
+\title{Identification of the Curie Temperature Distribution from
+Temperature Dependent Magnetisation Data}
+\author{Jonathon Waters\inst{1}}
+\institute{
+	\inst{1}
+	Engineering and the Environment,\\
+	University of Southampton,\\
+	UK\\
+}
+\date{}
+
+\begin{document}
+\frame{\titlepage
+\includegraphics[height=1cm]{Images/sponsor-wo}\hfill\includegraphics[height=1cm]{Images/uos_grey_large}}
+
+\setbeamertemplate{headline}{
+	\vskip25pt % horizontal line
+	\vskip-21pt\hspace{2pt}\hfill\includegraphics[height=7mm]{Images/sponsor-wo}\hspace{3.5mm}\includegraphics[height=7mm]{Images/uos_grey_large}\hspace{3.5mm} % logo on the right
+}
+
+\setbeamertemplate{footline}{
+	\vskip-8pt % horizontal line
+	\hspace{12cm} \insertframenumber/\inserttotalframenumber
+	\vskip4pt
+}
+
+\begin{frame}
+	\frametitle{Introduction}
+	\begin{columns}
+		\column{6cm}
+		In HAMR\footnotemark[1]:
+		\begin{itemize}
+			\item{$T_C$ distribution affects the noise performance}
+		\end{itemize} \vspace{1mm}
+
+		\begin{center}
+		\includegraphics[width=2.9cm]{Images/coerc} \hspace{1mm}
+		\includegraphics[width=2.9cm]{Images/laser} \\
+		\tiny \fullcite{dobisz2008patterned}
+		\end{center}
+
+		\column{6cm}
+		In Magnetic Hyperthermia\footnotemark[2]:
+		\begin{itemize}
+		\item{Low $T_C$ reduces tissue damage}
+		\end{itemize}
+
+		\begin{center}
+		\includegraphics[width=4cm]{Images/person} \\
+		\tiny \^{A}ngela Andrade, Roberta Ferreira, Jos\'{e} Fabris and Rosana Domingues (2011). Coating Nanomagnetic Particles for Biomedical Applications
+		\end{center}
+	\end{columns}
+	\footnotetext[1]{\tiny \fullcite{weller2014hamr}}
+	\footnotetext[2]{\tiny \fullcite{apostolova2009possible}}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Thank You}
+	In the completion of this work, we acknowledge financial support from the EPSRC Centre for Doctoral Training grant EP/L006766/1. \newline
+
+	We also acknowledge the use of the IRIDIS High Performance Computing Facility, and associated support services at the University of
+Southampton. \newline
+
+	Contact: J.M.Waters@soton.ac.uk
+\end{frame}
+\end{document}
