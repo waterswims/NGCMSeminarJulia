@@ -5,6 +5,7 @@
 %\usepackage[T1]{fontenc}
 \usepackage{winfonts}
 \usepackage[backend=bibtex]{biblatex}
+\usepackage{verbatim}
 \renewcommand{\sfdefault}{georgia}
 
 \bibliography{report}
@@ -119,6 +120,139 @@
 		\item Calls to Other Languages \newline
 		\item Parallelism \newline
 		\item ...
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Features: Multiple Dispatch}
+
+	\textbf{Two function calls:} \newline
+
+	\verb|my_func(x, 2)| \quad and \quad \verb|my_func(x, "cat")| \newline
+
+	\begin{columns}
+		\column[T]{6cm}
+		\textbf{Single Dispatch} \newline
+
+		In single dispatch languages like Python, the function calls dispatch to the \textbf{same function}.
+
+		\column[T]{6cm}
+		\textbf{Multiple Dispatch} \newline
+
+		In multiple dispatch languages like Julia, these function calls may or may not dispatch to \textbf{different functions} depending on the \textbf{type at run-time}.
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Features: Performance}
+
+	\begin{itemize}
+		\item Julia uses a \textbf{LLVM} to perform ``Just-In-Time'' (\textbf{JIT}) compiling of code. \newline
+
+		\begin{itemize}
+			\item C and Fortran compile into machine code then run the resulting exectutable. \newline
+
+			\item Python interperets instructions into bytecode on the fly, allowing for compatibility accross multiple platforms. \newline
+
+			\item Julia combines these approaches, interpreting the instructions then compiling them into the native machine code of the system on which it is running. \newline
+		\end{itemize}
+
+		\item This lets Julia approach and (sometimes) surpass C in speed while still looking like simple Python or Matlab code.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Features: Performance}
+
+	\includegraphics[width=11cm]{Images/perf1.jpg} \newline
+
+	\small http://scienceblogs.com/catdynamics/2014/04/21/why-fortran-lives/
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Features: Performance}
+
+	\small \begin{verbatim}
+		# julia code for generating the mandelbrot set
+
+		function mandelbrot(a)
+		    z = 0
+		    for i in 1:50
+		        z = z^2 + a
+		    end
+		    return z
+		end
+
+		for y in 1.0:-0.05:-1.0
+		    for x in 2.0:0.0315:0.5
+		        if (abs(mandelbrot(complex(x,y))) < 2)
+		            print("*")
+		        else
+		            print(" ")
+		        end
+		    end
+		    println()
+		end
+	\end{verbatim}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Features: Packages}
+
+	Julia features a built-in package manager: \newline
+
+	\begin{itemize}
+		\item Over 1100 registed packages (incl. Jupyter kernel). \newline
+
+		\item No messing around with external package managers like pip or conda. \newline
+
+		\item Interfaces to C, Fortran and Python (C++ being tested). Letting us reuse existing code wih little overhead. \newline
+
+		\item Due to the compiler, packages have been developed quickly in pure Julia, allowing a phenomenal development speed.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Features: Parallelism}
+
+	There are a number of methods of parallisation in Julia: \newline
+
+	\begin{itemize}
+		\item Remote Calls:
+
+			\begin{verbatim}
+				$ ./julia -p 2
+
+				julia> r = remotecall(rand, 2, 2, 2)
+				Future(2,1,3,Nullable{Any}())
+
+				julia> s = @spawnat 2 1 + fetch(r)
+				Future(2,1,6,Nullable{Any}())
+
+				julia> fetch(s)
+				2x2 Array{Float64,2}:
+				 1.60401  1.50111
+				 1.17457  1.15741
+			\end{verbatim}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Features: Parallelism}
+
+	There are a number of methods of parallisation in Julia: \newline
+
+	\begin{itemize}
+		\item Loop mapping:
+
+			\begin{verbatim}
+				$ ./julia -p 2
+
+				a = SharedArray(Float64,10)
+				@parallel for i in 1:10
+				    a[i] = i
+				end
+			\end{verbatim}
 	\end{itemize}
 \end{frame}
 
