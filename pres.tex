@@ -46,7 +46,7 @@
 
 %%%%%%%%%%%%%%%%%%%%
 
-\title{Why Julia?}
+\title{NGCM Seminar: Why Julia?}
 \author{Jonathon Waters}
 \institute{
 	Cohort 1,\\
@@ -85,8 +85,9 @@
 			\item Calls to Other Languages
 			\item Parallelism
 		\end{itemize}
+		\item Potential Pitfalls
 		\item Competitors
-		\item ...
+		\item Summary
 	\end{itemize}
 \end{frame}
 
@@ -254,6 +255,84 @@
 				end
 			\end{verbatim}
 	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Features: Summary}
+	\begin{itemize}
+		\item High-level language with multiple dispatch. \newline
+
+		\item Compiler offers good performance even with poorly written or unideal code. \newline
+
+		\item Mature package manager with calls to other languages. \newline
+
+		\item Built in parallelism with multiple frameworks.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Potential Pitfalls}
+	\begin{itemize}
+		\item Julia arrays are 1-indexed and use Fortran array ordering. \newline
+
+		\item Dictionaries are hashed differently to Python dictionaries (potentially slower). \newline
+
+		\item Parallel performance is improving but is still often not good and may even slow it down. \newline
+
+		\item Language still in beta (v0.5). Code writeen now many not run in 6 months.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Competitors}
+	\begin{itemize}
+		\item \textbf{Numba} is a library which provides a compiler for Python. It can perform JIT compiling for Python similar to Julia's compiler. It can also compile code for GPU's using CUDA. \newline
+
+		\item \textbf{Cython} translates Python code into C code, allowing you access to the functions as a Python library.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Competitors: Factorial Divisor}
+
+	\includegraphics[width=11cm]{Images/jit-comparison.png}
+
+	\tiny http://randyzwitch.com/python-pypy-julia-r-pqr-jit-just-in-time-compiler/ (2013)
+\end{frame}
+
+\begin{frame}
+	\frametitle{Competitors: LU Factorisation}
+
+	\includegraphics[width=11cm]{Images/LU_fact.png}
+
+	\tiny https://www.ibm.com/developerworks/community/blogs/jfp/entry/ A\_Comparison\_Of\_C\_Julia\_Python\_Numba\_Cython\_Scipy\_and\_BLAS\_on\_LU\_Factorization (January)
+\end{frame}
+
+\begin{frame}
+	\frametitle{Summary}
+
+	Julia is a modern language designed to overcome the programmer time vs runtime dilemma. \newline
+
+	\begin{columns}
+		\column[T]{6cm}
+		\textbf{Pros}
+		\begin{itemize}
+			\item{Speed!!}
+			\item Familiar
+			\item Multiple Dispatch
+			\item Parallel
+			\item Packages
+			\item Calls Other Languages
+		\end{itemize}
+
+		\column[T]{6cm}
+		\textbf{Cons}
+		\begin{itemize}
+			\item Beta
+			\item Poor Parallel
+			\item Indexing and hashing
+		\end{itemize}
+	\end{columns}
 \end{frame}
 
 \begin{frame}
